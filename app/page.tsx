@@ -6,9 +6,7 @@ import { RotateCcw } from "lucide-react";
 
 export default function Home() {
   const [squares, setSquares] = useState(Array(9).fill(null));
-  const [currentMove, setCurrentMove] = useState(0);
   const [xIsNext, setXIsNext] = useState(true);
-  const currentSquares = squares[currentMove];
 
   const winner = calculateWinner(squares);
   const isDraw = !winner && squares.every(square => square !== null);
@@ -40,7 +38,7 @@ export default function Home() {
     setXIsNext(!xIsNext);
   }
 
-  function Square({ value, onSquareClick }: any) {
+  function Square({ value, onSquareClick }: { value: any, onSquareClick: any }) {
     return (
       <button onClick={onSquareClick} className="bg-blue-300 w-24 h-24 border-2 border-white cursor-pointer text-4xl font-bold text-black hover:bg-cyan-400 transition-colors">{value}</button>
 
